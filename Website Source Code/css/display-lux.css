@@ -1,0 +1,25 @@
+/* Main styles */
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:800);
+
+.text {
+  fill: none;
+  stroke-width: 2;
+  stroke-linejoin: round;
+  stroke-dasharray: 70 330;
+  stroke-dashoffset: 0;
+}
+
+/* Other styles */
+html, body {
+  height: 80%;
+}
+
+body {
+  background: #ece5df;
+  background-size: .2em 100%;
+  font: 6em Open Sans, Impact;
+  text-transform: uppercase;
+  margin: 0;
+  text-align: center;
+  vertical-align: middle;
+}
