@@ -11,4 +11,4 @@ Here is all the files of my project that are hosted on the Raspberry Pi 3.
 
 To Work, the card need to have Apache, PHP5 and MySQL Database (with PDO function) package (In other words, it need LAMP). 
 
-A database called "catpbdd" must execute the captbdd.sql file.
+A database must execute the captbdd.sql file to make the project works.
