@@ -334,30 +334,3 @@ if (client.connect(server, 80)) {
                      }//Baisser le Store
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- 
-
-
