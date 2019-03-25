@@ -57,7 +57,7 @@
 				<li><strong>Location : </strong> Drap, France</li>
 				<li><strong>Contact : </strong><a href="mailto:contact@junkjumper-projects.com">contact@junkjumper-projects.com</a></li>
 				<div class="resume-list">
-					<li><strong>PDF presentations pages (french only) : </strong>
+					<li><strong>PDF presentations pages (french only & only by downbloading) : </strong>
 						<center>
 							<ul>
 								<li>Alexandre's Works : <a href="downloads/PRESENTATION_SLEGPI_PROJET_Alexandre.pdf">Télécharger le résumé</a></li>
