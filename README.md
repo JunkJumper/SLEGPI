@@ -1,4 +1,5 @@
 # SLEGPI-Website
+[![Build Status](https://travis-ci.org/JunkJumper/SLEGPI.svg?branch=master)](https://travis-ci.org/JunkJumper/SLEGPI)
 SLEGPI is my project for my exams of june 2018. I have work on it from October 2017 to May 2018.
 
 In what consist SLEGPI-Website ?
