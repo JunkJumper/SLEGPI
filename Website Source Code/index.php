@@ -1,8 +1,8 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "root";
-$dbname = "database";
+
+include 'database.php';
+
+
 
 try {
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
@@ -105,8 +105,6 @@ $conn = null;
 ?>
 
 <!doctype html>
-<iframe src="http://10.66.240.59/AM=MM" height="1" width="1" Scrolling="no" Frameborder="0"></iframe>
-<iframe src="http://10.66.240.59/LI=<?php echo $LI; ?>/LE=<?php echo $LE; ?>/S=<?php echo $S; ?>" height="1" width="1" Scrolling="no" Frameborder="0"></iframe>
 <html class="no-js" lang="fr">
 	<head>
 		<!-- En tête du site -->
@@ -341,3 +339,4 @@ $conn = null;
 	</div>
 </footer>
 </html>
+

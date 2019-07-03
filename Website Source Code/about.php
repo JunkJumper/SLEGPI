@@ -57,13 +57,13 @@
 				<li><strong>Location : </strong> Drap, France</li>
 				<li><strong>Contact : </strong><a href="mailto:contact@junkjumper-projects.com">contact@junkjumper-projects.com</a></li>
 				<div class="resume-list">
-					<li><strong>PDF presentations pages (french only & only by downbloading) : </strong>
+					<li><strong>PDF presentations pages (french only) : </strong>
 						<center>
 							<ul>
-								<li>Alexandre's Works : <a href="downloads/PRESENTATION_SLEGPI_PROJET_Alexandre.pdf">Télécharger le résumé</a></li>
-								<li>Baptiste's Works : <a href="downloads/PRESENTATION_SLEGPI_PROJET_Baptiste.pdf">Télécharger le résumé</a></li>
-								<li>José's Works : <a href="downloads/PRESENTATION_SLEGPI_PROJET_Jose.pdf">Télécharger le résumé</a></li>
-								<li>Valentin's Works : <a href="downloads/PRESENTATION_SLEGPI_PROJET_Valentin.pdf">Télécharger le résumé</a></li>
+								<li>Alexandre's Works : <a href="downloads/PRESENTATION_SLEGPI_PROJET_Alexandre.pdf">Download</a></li>
+								<li>Baptiste's Works : <a href="downloads/PRESENTATION_SLEGPI_PROJET_Baptiste.pdf">Download</a></li>
+								<li>José's Works : <a href="downloads/PRESENTATION_SLEGPI_PROJET_Jose.pdf">Download</a></li>
+								<li>Valentin's Works : <a href="downloads/PRESENTATION_SLEGPI_PROJET_Valentin.pdf">Download</a></li>
 							</ul>
 						</center>
 					</li>

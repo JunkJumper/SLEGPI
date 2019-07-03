@@ -1,8 +1,9 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "root";
-$dbname = "database";
+
+include 'database.php';
+
+
+
 	try
 	{
 // Connection MySQL.

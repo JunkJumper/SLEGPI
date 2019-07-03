@@ -2,10 +2,11 @@
 if (isset($_POST["LI"])) $LI= $_POST["LI"]; else $LI ="";
 if (isset($_POST["LE"]))  $LE= $_POST["LE"]; else $LE ="";
 if (isset($_POST["S"]))  $S= $_POST["S"]; else $S ="";
-$servername = "localhost";
-$username = "root";
-$password = "root";
-$dbname = "database";
+
+
+include 'database.php';
+
+
 
 try {
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
@@ -68,7 +69,6 @@ $conn = null;
 				<br \><br \>- For Indoor Lights = <?php if ($LI == 'Y') {echo "Turning on the lights";}	elseif ($LI == 'non') {echo "Turning off the lights";} else {echo "Nothing was sent";}?>
 				<br \><br \>- For Outdoor Lights = <?php if ($LE == 'Z') {echo "Turning on the lights";}	elseif ($LE == 'wrong') {echo "Turning off the lights";} else {echo "Nothing was sent";}?>
 				<br \><br \>- For the blind = <?php if ($S == 'false') {echo "Raising down the blind";} elseif ($S == 'OUV') {echo "Raising up the blind";} else {echo "Nothing was sent";}?></p>
-				<iframe src="http://10.66.240.59/LI=<?php echo $LI; ?>/LE=<?php echo $LE; ?>/S=<?php echo $S; ?>" height="1" width="1" Scrolling="no" Frameborder="0"></iframe>
 			</center>
 		</div>
 	</body>

@@ -1,13 +1,19 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "root";
-$dbname = "database";
+
+include 'database.php';
 
 try {
     $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
     // set the PDO error mode to exception
 	$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+	$conn1 = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+    // set the PDO error mode to exception
+	$conn1->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+	$conn2 = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+    // set the PDO error mode to exception
+	$conn2->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 	
 	// Connection MySQL for imgs displaying.
     $bdd = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
@@ -28,9 +34,20 @@ try {
 
 $conn = null;
 
+//Simulation of Arduino sensors reception
+$randl = rand(0, 9999);
+$randw = rand(0, 50);
+
+//send generated numbers to database
+$sql1 = "UPDATE `capteurs` SET `lux` = '$randl' WHERE `capteurs`.`id` = 1";
+$stmt = $conn1->prepare($sql1);
+$stmt->execute();
+
+$sql2 = "UPDATE `capteurs` SET `vent` = '$randw' WHERE `capteurs`.`id` = 1";
+$stmt2 = $conn2->prepare($sql2);
+$stmt2->execute();
 ?>
 <!doctype html>
-<iframe src="http://10.66.240.59/AM=WW" height="1" width="1" Scrolling="no" Frameborder="0"></iframe>
 <html class="no-js" lang="fr">
 	<head>
 		<!-- En tête du site -->
@@ -47,7 +64,7 @@ $conn = null;
 			<script>
 				setTimeout(function () {
 	    		window.location.href = "auto.php";
-    			}, 2500);
+    			}, 5000);
 			</script>
 		<div class="row">
 	<div class="small-12 medium-12 large-12 small-centered columns">
@@ -68,7 +85,7 @@ $conn = null;
 			<ul class="inline-list-custom">
 				<li><a href="index.php" class="current">Use the system</a></li>
 				<li><a href="about.php">About</a></li>
-				<li><a href="https://junkjumper.github.io/SLEGPI/">Back to the presentation page</a></li>	
+				<li><a href="https://junkjumper.github.io/SLEGPI/">Back to the presentation page</a></li>							
 			</ul>
 		</nav>
 	</div>
@@ -80,15 +97,15 @@ $conn = null;
 		<ul class="small-block-grid-1 medium-block-grid-3 large-block-grid-3 inline-list-custom">
 
 
-						<!-- Début Case 1 -->
+            			<!-- Début Case 1 -->
 						<li>
 				<div class="thumbnail">
 					<div class="thumbnail-img">
 							<?php
-							$etateInt = $bdd->query('SELECT `eInt` FROM `capteurs` WHERE id=1');
+							$etateInt = $bdd->query('SELECT `lux` FROM `capteurs` WHERE id=1');
 							$result = $etateInt->fetch();
 							$count = $result[0];
-							if ($count == 1)
+							if ($count < 3000)
 							{
 							echo '<img src="img/allume.png" Lumières Intérieures Allumées" width="50%" height="100px">';
 							}
@@ -98,7 +115,7 @@ $conn = null;
 							} 
 							?>
 						<div class="thumbnail-caption">
-							<p>State of the Indoor Lights</p>
+						<p>Position of the blind</p>
 						</div>
 					</div>
 				</div>
@@ -106,14 +123,14 @@ $conn = null;
 						<!-- FIN Case 1 -->
 
             			<!-- Début Case 2 -->
-			<li>
-				<div class="thumbnail">
+						<li>
+				<div class="thumbnail" id="disp-result1">
 					<div class="thumbnail-img">
 							<?php
-							$etatStore = $bdd->query('SELECT `Store` FROM `capteurs` WHERE id=1');
+							$etatStore = $bdd->query('SELECT `vent` FROM `capteurs` WHERE id=1');
 							$result2 = $etatStore->fetch();
 							$count2 = $result2[0];
-							if ($count2 == 0)
+							if ($count2 < 30)
 							{
 							echo '<img src="img/monte.png" alt="Store en position Haute" width="50%" height="100px">';
 							}
@@ -123,7 +140,7 @@ $conn = null;
 							} 
 							?>
 						<div class="thumbnail-caption">
-						<p>Position of the blind</p>
+						<p>State of the Outdoor Lights</p>
 						</div>
 					</div>
 				</div>
@@ -136,10 +153,10 @@ $conn = null;
 				<div class="thumbnail">
 					<div class="thumbnail-img">
 							<?php
-							$etateExt = $bdd->query('SELECT `eExt` FROM `capteurs` WHERE id=1');
+							$etateExt = $bdd->query('SELECT `lux` FROM `capteurs` WHERE id=1');
 							$result1 = $etateExt->fetch();
 							$count1 = $result1[0];
-							if ($count1 == 1)
+							if ($count1 < 3000)
 							{
 							echo '<img src="img/allume.png" Lumières Extérieures Allumées" width="50%" height="100px">';
 							}
@@ -158,13 +175,13 @@ $conn = null;
 
 
             			<!-- Début Case 4 -->
-						<li>
+			<li>
 				<div class="thumbnail" id="rl-lux">
 					<div class="thumbnail-img">
 						<iframe src="display-lux.php" style="border:0px #ffffff hidden;" name="myiFrame" scrolling="no" frameborder="1" marginheight="0px" marginwidth="0px" height="120px" width="328px" allowfullscreen></iframe>
 					</div>
 						<div class="thumbnail-caption">
-							<p>Amount of light (in µW/cm²)</p>
+						<p>Amount of light (in µW/cm²)</p>
 						</div>
 				</div>
 			</li>
@@ -175,21 +192,21 @@ $conn = null;
 				<div class="thumbnail">
 						<div class="thumbnail-img">
 	                    	<br />
-								<a href="index.php"><img src="img/auto/on.png" border="0" id="send" width="280", height="100%" /></a>
+								<a href="index.php#disp-result"><img src="img/auto/on.png" border="0" id="send" width="280", height="100%" /></a>
 						</div>
-					<div class="thumbnail-caption"><a href="auto.php">Automatic Mode</a></div>
+						<div class="thumbnail-caption"><a href="auto.php">Automatic Mode</a></div>
 				</div>
 			</li>
 						<!-- FIN Case 5 -->
 
             			<!-- Début Case 6 -->
-			<li>
+						<li>
 				<div class="thumbnail" id="rl-wind">
 					<div class="thumbnail-img">
 						<iframe src="display-vent.php" style="border:0px #ffffff hidden;" name="myiFrame" scrolling="no" frameborder="1" marginheight="0px" marginwidth="0px" height="120px" width="328px" allowfullscreen></iframe>
 					</div>
 						<div class="thumbnail-caption">
-							<p>Wind Speed (km/h)</p>
+						<p>Wind Speed (km/h)</p>
 						</div>
 				</div>
 			</li>
@@ -200,7 +217,7 @@ $conn = null;
 </body>
 <footer>
 	<div>
-		<div>
+	<div>
 			<ul>
 				<li>&copy; 2018 <a href="index.php">SLEGPI</a>. Projet SIN 2017/2018.</li>
 				<li><br /><a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Licence Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a> This page is available under the terms of the <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"> Creative Commons Attribution 4.0 International License</a>.</p></li>

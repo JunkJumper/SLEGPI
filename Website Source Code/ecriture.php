@@ -1,8 +1,9 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "root";
-$dbname = "database";
+
+include 'database.php';
+
+
+
 echo"test mysql";
 if (isset($_GET['vent']))   
 {
