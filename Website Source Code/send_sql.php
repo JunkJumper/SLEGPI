@@ -53,7 +53,7 @@ $conn = null;
 			<script>
 				setTimeout(function () {
 	    		window.location.href = "index.php#disp-result";
-    			}, 2981);
+    			}, 3000);
 			</script>
 	</head>
 	<body>
